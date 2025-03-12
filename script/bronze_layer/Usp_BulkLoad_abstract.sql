@@ -1,7 +1,7 @@
 /*
 Creating user defined store procedure for bulk insert
 this is customised abstraction for bulk insert 
-This will support DRY principle and provide uniformity
+This will support DRY principle and provides uniformity
 */
 
 CREATE OR ALTER PROC bronze.Usp_BulkLoad_abstract
