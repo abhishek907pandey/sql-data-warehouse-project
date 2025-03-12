@@ -5,7 +5,7 @@ creates table from CRM and ERP sources
 
 create table bronze.crm_cust_info
 (
-	cst_id int not null,
+	cst_id int,
 	cst_key nvarchar(50),
 	cst_firstname nvarchar(50),
 	cst_lastname nvarchar(50),
@@ -16,7 +16,7 @@ create table bronze.crm_cust_info
 
 create table bronze.crm_prd_info
 (
-	prd_id int not null,
+	prd_id int,
 	prd_key nvarchar(50),
 	prd_nm nvarchar(50),
 	prd_cost int,
