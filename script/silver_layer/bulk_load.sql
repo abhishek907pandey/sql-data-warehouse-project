@@ -1,4 +1,3 @@
-
 create or alter proc silver.Usp_Bulkload
 as
 BEGIN
@@ -67,11 +66,11 @@ select * from set1 where prd_end_dt is null; --- only latest record to keep not 
 --==============================================================================================================================
 --==============>>  >> silver.crm_sales_details
 
-insert into silver.crm_sales_details (sls_ord_num,product_pk,sls_cust_id,sls_order_dt,sls_ship_dt,sls_due_dt,sls_sales,sls_quantity,sls_price
+insert into silver.crm_sales_details (sls_ord_num,sls_prd_key,sls_cust_id,sls_order_dt,sls_ship_dt,sls_due_dt,sls_sales,sls_quantity,sls_price
 )
 	Select 
 	sls_ord_num,
-	p.product_pk,
+	sls_prd_key,
 	sls_cust_id,
 	CASE 
 		WHEN (LEN(sls_order_dt)=8 AND ISNUMERIC(sls_order_dt)=1) THEN CAST(CAST(sls_order_dt AS NVARCHAR(50)) AS DATE)
@@ -95,7 +94,6 @@ insert into silver.crm_sales_details (sls_ord_num,product_pk,sls_cust_id,sls_ord
 		else sls_price 
 	end as sls_price
 	from bronze.crm_sales_details as s
-LEFT JOIN silver.crm_prd_info as p on p.prd_sls_prod_key= s.sls_prd_key;
 
 --==============================================================================================================================
 --==============>>  >> silver.erp_cust_az12
