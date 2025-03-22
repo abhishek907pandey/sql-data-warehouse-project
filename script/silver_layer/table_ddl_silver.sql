@@ -46,11 +46,10 @@ create table silver.crm_prd_info
 if OBJECT_ID('silver.crm_sales_details') is not null 
 drop table silver.crm_sales_details;
 
-
 create table silver.crm_sales_details
 (
 	sls_ord_num nvarchar(50),
-	product_pk int,  -- ref of product_key in silver.crm_prd_info
+	sls_prd_key nvarchar(50),  
 	sls_cust_id int,
 	sls_order_dt date,
 	sls_ship_dt date,
